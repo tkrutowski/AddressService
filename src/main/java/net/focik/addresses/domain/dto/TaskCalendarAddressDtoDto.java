@@ -4,13 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import net.focik.addresses.domain.IAddress;
+import net.focik.addresses.domain.IAddressDto;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class TaskCalendarAddressDto implements IAddress {
+public class TaskCalendarAddressDtoDto implements IAddressDto {
+    private Long id;
     private String commune;
     private String city;
     private String street;

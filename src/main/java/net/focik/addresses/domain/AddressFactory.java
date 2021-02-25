@@ -1,39 +1,47 @@
 package net.focik.addresses.domain;
 
-import net.focik.addresses.domain.dto.TaskCalendarAddressDto;
-import net.focik.addresses.domain.share.AddressFor;
+import lombok.AllArgsConstructor;
+import net.focik.addresses.domain.dto.TaskCalendarAddressDtoDto;
+import net.focik.addresses.domain.share.AddressType;
 import net.focik.addresses.infrastructure.dto.AddressDbDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
 @Component
+@AllArgsConstructor
 class AddressFactory {
+
     private ModelMapper modelMapper;
 
 
-    IAddress createAddressFromDto(AddressDbDto addressDto, AddressFor addressFor) {
+    IAddressDto createAddressFromDto(AddressDbDto addressDto, AddressType addressType) {
 
-        IAddress iAddress = null;
+        IAddressDto iAddressDto = null;
 
         Address address = modelMapper.map(addressDto, Address.class);
-        switch (addressFor) {
+        switch (addressType) {
             case TASK_CALENDAR:
-                iAddress = createTaskCalendarAddressDto(address);
+                iAddressDto = createTaskCalendarAddressDto(address);
                 break;
             default:
-                iAddress = null;
+                iAddressDto = null;
                 break;
 
 
         }
 
-        return iAddress;
+        return iAddressDto;
     }
 
-    TaskCalendarAddressDto createTaskCalendarAddressDto(Address address) {
-        TaskCalendarAddressDto dbDto = null;
+    TaskCalendarAddressDtoDto createTaskCalendarAddressDto(Address address) {
+        TaskCalendarAddressDtoDto dbDto = new TaskCalendarAddressDtoDto();
 
-        //TODO create address
+        dbDto.setId(address.getId());
+        dbDto.setCity(address.getCity());
+        dbDto.setCommune(address.getCommune());
+        dbDto.setStreet(address.getStreet());
+        dbDto.setLongitude(address.getLongitude());
+        dbDto.setLatitude(address.getLatitude());
 
         return dbDto;
     }

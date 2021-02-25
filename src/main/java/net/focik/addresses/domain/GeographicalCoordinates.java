@@ -1,30 +1,19 @@
 package net.focik.addresses.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
+@AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "geographical_coordinates")
 @ToString
+@Getter
 class GeographicalCoordinates {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
     private Long id;
     private String latitude; //szerokosc
     private String longitude; //długość
 
-    GeographicalCoordinates(String latitude, String longitude) {
-        this.latitude = latitude;
-        this.longitude = longitude;
-    }
+
 }

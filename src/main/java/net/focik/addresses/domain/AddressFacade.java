@@ -1,9 +1,8 @@
 package net.focik.addresses.domain;
 
 import lombok.AllArgsConstructor;
-import net.focik.addresses.domain.dto.TaskCalendarAddressDto;
 import net.focik.addresses.domain.port.IAddressRepository;
-import net.focik.addresses.domain.share.AddressFor;
+import net.focik.addresses.domain.share.AddressType;
 import net.focik.addresses.infrastructure.dto.AddressDbDto;
 import org.springframework.stereotype.Service;
 
@@ -18,15 +17,15 @@ public class AddressFacade {
     private AddressFactory addressFactory;
 
 
-    public Long addClient(AddressDbDto addressDbDto) {
+    public Long addAddress(AddressDbDto addressDbDto) {
         int i = 0;
         return addressRepository.add(addressDbDto);
     }
 
-    public IAddress getAddress(Long id, AddressFor addressFor) {
+    public IAddressDto getAddressByType(Long id, AddressType addressType) {
         int i = 0;
         Optional<AddressDbDto> byId = addressRepository.findById(id);
 
-        return addressFactory.createAddressFromDto(byId.get(), addressFor);
+        return addressFactory.createAddressFromDto(byId.get(), addressType);
     }
 }

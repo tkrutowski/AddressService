@@ -2,8 +2,8 @@ package net.focik.addresses.api;
 
 import lombok.AllArgsConstructor;
 import net.focik.addresses.domain.AddressFacade;
-import net.focik.addresses.domain.dto.TaskCalendarAddressDto;
-import net.focik.addresses.domain.share.AddressFor;
+import net.focik.addresses.domain.dto.TaskCalendarAddressDtoDto;
+import net.focik.addresses.domain.share.AddressType;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,9 +20,9 @@ class TaskCalendarController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    TaskCalendarAddressDto getAddress(@PathVariable Long id){
+    TaskCalendarAddressDtoDto getAddress(@PathVariable Long id){
         int i=0;
-        return (TaskCalendarAddressDto) addressService.getAddress(id, AddressFor.TASK_CALENDAR);
+        return (TaskCalendarAddressDtoDto) addressService.getAddressByType(id, AddressType.TASK_CALENDAR);
     }
 
 }

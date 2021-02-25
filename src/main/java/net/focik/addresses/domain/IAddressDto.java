@@ -1,4 +1,4 @@
 package net.focik.addresses.domain;
 
-public interface IAddress {
+public interface IAddressDto {
 }

@@ -14,11 +14,12 @@ class AddressRepositoryAdapter implements IAddressRepository {
 
     @Override
     public Long add(AddressDbDto dto) {
-        return null;
+        return addressDtoRepository.save(dto).getId();
     }
 
     @Override
     public Optional<AddressDbDto> findById(Long id) {
-        return Optional.empty();
+
+        return addressDtoRepository.findById(id);
     }
 }

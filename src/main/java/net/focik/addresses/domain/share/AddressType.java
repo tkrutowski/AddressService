@@ -1,5 +1,5 @@
 package net.focik.addresses.domain.share;
 
-public enum AddressFor {
+public enum AddressType {
     TASK_CALENDAR
 }
