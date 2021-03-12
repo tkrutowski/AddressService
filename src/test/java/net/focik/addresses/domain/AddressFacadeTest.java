@@ -38,7 +38,9 @@ class AddressFacadeTest {
         TaskCalendarAddressDtoDto  addressDto = (TaskCalendarAddressDtoDto) facade.getAddressByType(id, AddressType.TASK_CALENDAR);
 
         //then
-        Assertions.assertEquals(id, addressDto.getId());
+        Assertions.assertEquals("Gniezno", addressDto.getCommune());
+        Assertions.assertEquals("Poznań", addressDto.getCity());
+        Assertions.assertEquals("Szyperska 13D/32", addressDto.getStreet());
 
     }
 
@@ -46,7 +48,7 @@ class AddressFacadeTest {
     private AddressDbDto getAddress(){
         AddressDbDto address=new AddressDbDto();
 //        address.setId(2l);
-        address.setCommune("Poznań");
+        address.setCommune("Gniezno");
         address.setCity("Poznań");
         address.setStreet("Szyperska 13D/32");
 

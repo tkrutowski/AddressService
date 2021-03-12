@@ -12,12 +12,12 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@ExtendWith(SpringExtension.class)
-@SpringBootTest
+//@ExtendWith(SpringExtension.class)
+//@SpringBootTest
 class AddressConfigTest {
 
-    @Autowired
-    ModelMapper modelMapper;
+//    @Autowired
+    ModelMapper modelMapper = new ModelMapper();
     @Test
     void modelMapper() {
         //when

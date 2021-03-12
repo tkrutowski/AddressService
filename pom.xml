@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>net.focik</groupId>
-	<artifactId>addresses</artifactId>
+	<artifactId>addresses-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>addresses</name>
+	<name>addresses-service</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>

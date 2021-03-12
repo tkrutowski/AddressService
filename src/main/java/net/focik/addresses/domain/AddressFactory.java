@@ -36,12 +36,12 @@ class AddressFactory {
     TaskCalendarAddressDtoDto createTaskCalendarAddressDto(Address address) {
         TaskCalendarAddressDtoDto dbDto = new TaskCalendarAddressDtoDto();
 
-        dbDto.setId(address.getId());
+       // dbDto.setId(address.getId());
         dbDto.setCity(address.getCity());
         dbDto.setCommune(address.getCommune());
         dbDto.setStreet(address.getStreet());
-        dbDto.setLongitude(address.getLongitude());
-        dbDto.setLatitude(address.getLatitude());
+        //dbDto.setLongitude(address.getLongitude());
+        //dbDto.setLatitude(address.getLatitude());
 
         return dbDto;
     }

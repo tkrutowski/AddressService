@@ -11,10 +11,10 @@ import net.focik.addresses.domain.IAddressDto;
 @Getter
 @Setter
 public class TaskCalendarAddressDtoDto implements IAddressDto {
-    private Long id;
+//    private Long id;
     private String commune;
     private String city;
     private String street;
-    private String latitude; //szerokosc
-    private String longitude; //długość
+//    private String latitude; //szerokosc
+//    private String longitude; //długość
 }
