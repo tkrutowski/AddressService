@@ -19,7 +19,10 @@ class AddressRepositoryAdapter implements IAddressRepository {
 
     @Override
     public Optional<AddressDbDto> findById(Long id) {
+        if(id == null)
+            return Optional.empty();
 
         return addressDtoRepository.findById(id);
+
     }
 }

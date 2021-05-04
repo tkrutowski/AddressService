@@ -22,7 +22,8 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @Entity
-@Table(name = "addresses")
+//@Table(name = "addresses")
+@Table(name = "address_gasconnection_view_test")
 @ToString
 public class AddressDbDto {
 
@@ -33,9 +34,9 @@ public class AddressDbDto {
     private String commune;
     private String city;
     private String street;
-    private String zip;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "coordinates_id", referencedColumnName = "id")
-    private GeoCoordinatesDbDto coordinates;
+    //private String zip;
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "coordinates_id", referencedColumnName = "id")
+//    private GeoCoordinatesDbDto coordinates;
 
 }
