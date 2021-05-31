@@ -1,6 +1,7 @@
 package net.focik.addresses.api;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import net.focik.addresses.domain.AddressFacade;
 import net.focik.addresses.domain.IAddressDto;
 import net.focik.addresses.domain.share.AddressType;
@@ -16,14 +17,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/address")
+@Log4j2
 public class AddressController {
     private AddressFacade addressService;
 
     @GetMapping("/type/{id}")
     IAddressDto getAddressByType(@PathVariable Long id, @RequestParam(name = "type" ) AddressType type) {
         int i=0;
-        return addressService.getAddressByType(id, type);
+        log.info("ADDRES-SERVICE: Try find address for  id = " + id + "and type: "+type);
 
+        IAddressDto addressByType = addressService.getAddressByType(id, type);
+        log.info(addressByType != null ? "ADDRES-SERVICE: Found address for id = " + id : "ADDRES-SERVICE: Not found address for id = " + id);
+        return addressByType;
     }
 
     @GetMapping("/{id}")
