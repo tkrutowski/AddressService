@@ -1,6 +1,6 @@
 package net.focik.addresses.domain.port;
 
-import net.focik.addresses.infrastructure.dto.AddressDbDto;
+import net.focik.addresses.domain.Address;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -8,7 +8,7 @@ import java.util.Optional;
 @Component
 public interface IAddressRepository {
 
-    Long add(AddressDbDto dto);
+    Long add(Address dto);
 
-    Optional<AddressDbDto> findById(Long id);
+    Optional<Address> findById(Long id);
 }

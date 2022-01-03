@@ -1,8 +1,5 @@
 package net.focik.addresses.domain;
 
-import net.focik.addresses.domain.dto.TaskCalendarAddressDtoDto;
-import net.focik.addresses.domain.share.AddressType;
-import net.focik.addresses.infrastructure.dto.AddressDbDto;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,7 +9,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.transaction.Transactional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -35,22 +32,28 @@ class AddressFacadeTest {
         Long id = facade.addAddress(getAddress());
 
         //when
-        TaskCalendarAddressDtoDto  addressDto = (TaskCalendarAddressDtoDto) facade.getAddressByType(id, AddressType.TASK_CALENDAR);
+        Address result = facade.getAddress(id);
 
         //then
-        Assertions.assertEquals("Gniezno", addressDto.getCommune());
-        Assertions.assertEquals("Poznań", addressDto.getCity());
-        Assertions.assertEquals("Szyperska 13D/32", addressDto.getStreet());
+        Assertions.assertEquals("Poznań", result.getCommune());
+        Assertions.assertEquals("Poznań", result.getCity());
+        Assertions.assertEquals("Szyperska 13D/32", result.getStreet());
+        Assertions.assertEquals("61-754", result.getZip());
+        Assertions.assertEquals(id, result.getId());
+        Assertions.assertEquals("55.24", result.getCoordinates().getLatitude());
+        Assertions.assertEquals("74.35", result.getCoordinates().getLongitude());
 
     }
 
 
-    private AddressDbDto getAddress(){
-        AddressDbDto address=new AddressDbDto();
-//        address.setId(2l);
-        address.setCommune("Gniezno");
-        address.setCity("Poznań");
-        address.setStreet("Szyperska 13D/32");
+    private Address getAddress(){
+        Address address= Address.builder()
+                .city("Poznań")
+                .street("Szyperska 13D/32")
+                .commune("Poznań")
+                .zip("61-754")
+                .coordinates(new GeographicalCoordinates(null,"55.24","74.35"))
+                .build();
 
         return address;
     }

@@ -1,12 +1,16 @@
 package net.focik.addresses.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Data
-class Address {
+public class Address {
     private Long id;
     private String commune;
     private String city;

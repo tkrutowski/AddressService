@@ -19,18 +19,18 @@ public class AddressFacade {
     private AddressFactory addressFactory;
 
 
-    public Long addAddress(AddressDbDto addressDbDto) {
-        Optional<AddressDbDto> byId = addressRepository.findById(addressDbDto.getId());
+    public Long addAddress(Address address) {
+        Optional<Address> byId = addressRepository.findById(address.getId());
 
         if(byId.isPresent())
-            throw new AddressAlreadyExistsException(addressDbDto.getId());
+            throw new AddressAlreadyExistsException(address.getId());
         int i = 0;
-        return addressRepository.add(addressDbDto);
+        return addressRepository.add(address);
     }
 
     public IAddressDto getAddressByType(Long id, AddressType addressType) {
         int i = 0;
-        Optional<AddressDbDto> byId = addressRepository.findById(id);
+        Optional<Address> byId = addressRepository.findById(id);
 
         if(byId.isEmpty())
             throw new AddressDoesNotExistException(id);
@@ -38,8 +38,8 @@ public class AddressFacade {
         return addressFactory.createAddressFromDto(byId.get(), addressType);
     }
 
-    public AddressDbDto getAddress(Long id) {
-        Optional<AddressDbDto> byId = addressRepository.findById(id);
+    public Address getAddress(Long id) {
+        Optional<Address> byId = addressRepository.findById(id);
 
         if(byId.isEmpty())
             throw new AddressDoesNotExistException(id);
