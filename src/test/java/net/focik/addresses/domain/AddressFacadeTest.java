@@ -27,7 +27,7 @@ class AddressFacadeTest {
 
     @Test
     @Transactional
-    void should_return_address_when_id_given() {
+    void should_return_address_when_correct_given() {
         //given
         Long id = facade.addAddress(getAddress());
 
@@ -42,9 +42,25 @@ class AddressFacadeTest {
         Assertions.assertEquals(id, result.getId());
         Assertions.assertEquals("55.24", result.getCoordinates().getLatitude());
         Assertions.assertEquals("74.35", result.getCoordinates().getLongitude());
-
     }
 
+    @Test
+    @Transactional
+    void should_return_address_with_empty_string_when_null_given() {
+        //given
+        Long id = facade.addAddress(getAddress_null());
+
+        //when
+        Address result = facade.getAddress(id);
+
+        //then
+        Assertions.assertEquals("", result.getCommune());
+        Assertions.assertEquals("", result.getCity());
+        Assertions.assertEquals("", result.getStreet());
+        Assertions.assertEquals("", result.getZip());
+        Assertions.assertEquals(id, result.getId());
+        Assertions.assertEquals(null, result.getCoordinates());
+    }
 
     private Address getAddress(){
         Address address= Address.builder()
@@ -53,6 +69,17 @@ class AddressFacadeTest {
                 .commune("Poznań")
                 .zip("61-754")
                 .coordinates(new GeographicalCoordinates(null,"55.24","74.35"))
+                .build();
+
+        return address;
+    }
+    private Address getAddress_null(){
+        Address address= Address.builder()
+                .city(null)
+                .street(null)
+                .commune(null)
+                .zip(null)
+                .coordinates(null)
                 .build();
 
         return address;
