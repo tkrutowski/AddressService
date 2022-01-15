@@ -17,7 +17,6 @@ public class AddressFacade {
     //@Qualifier("inMemoryClientRepositoryAdapter")
     private IAddressRepository addressRepository;
 
-
     public Long addAddress(Address address) {
         Optional<Address> byId = addressRepository.findById(address.getId());
 
