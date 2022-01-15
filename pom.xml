@@ -14,7 +14,7 @@
 
     <groupId>net.focik</groupId>
     <artifactId>address-service</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.2-SNAPSHOT</version>
 
     <properties>
         <java.version>11</java.version>
@@ -67,6 +67,13 @@
         <!--            <groupId>org.springframework.cloud</groupId>-->
         <!--            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>-->
         <!--        </dependency>-->
+
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20211205</version>
+        </dependency>
+
     </dependencies>
 
     <!--    <dependencyManagement>-->

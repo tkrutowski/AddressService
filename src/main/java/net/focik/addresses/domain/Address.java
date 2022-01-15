@@ -2,16 +2,20 @@ package net.focik.addresses.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Data
+@Getter
+@EqualsAndHashCode
+@ToString
 public class Address {
-    private Long id;
+    private  Long id;
     private String commune;
     private String city;
     private String street;
@@ -29,5 +33,17 @@ public class Address {
         if(coordinates != null)
             return this.coordinates.getLongitude();
         return "";
+    }
+
+    public String toJsonString() {
+        return "{" +
+                "id=" + id +
+                ", commune='" + commune + '\'' +
+                ", city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", zip='" + zip + '\'' +
+                ", latitude='" + getLatitude() +'\'' +
+                ", longitude='" + getLongitude() +'\'' +
+                '}';
     }
 }
