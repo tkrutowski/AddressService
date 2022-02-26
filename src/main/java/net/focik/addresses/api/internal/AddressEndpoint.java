@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import net.focik.addresses.domain.Address;
 import net.focik.addresses.domain.AddressFacade;
-import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @AllArgsConstructor
